@@ -1,15 +1,7 @@
 //Linear search algorithm
 /*
-you search linearly
-*/
+Time Complexity-->O(n)
 
-//Linear search algorithm
-/*
-you search linearly
-*/
-
-//Linear search algorithm
-/*
 you search linearly
 */
 
