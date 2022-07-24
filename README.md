@@ -2,13 +2,14 @@
 ada_lab_practice
 
 ## Time Complexities
+``` yml
 TOH             --->O(2^n)
 Binary Search   --->O(log n)
 Linear Search   --->O(n)
 Selection Sort  --->O(n^2)
 Bubble Sort     --->O(n^2)
 Inserion Sort   --->O(n^2)
-
+```
 ### Ways to remember The algorithms
 
 selection sort  -->You first select the smallest number and then change the place of it
