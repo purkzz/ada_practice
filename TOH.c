@@ -1,6 +1,9 @@
 //Tower Of Hanoi Problem
 //3-->pegs  
 //many number of disks(n)
+//Time Complexity-->O(2^n)
+//number of moves required is (2^n)-1
+
 
 //Algorithm
 /*

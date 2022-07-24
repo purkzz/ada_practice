@@ -1,6 +1,10 @@
 //selection_sort algorithm
 
 /*
+
+Time Complexity-->O(n^2)
+
+
 make two loops
 one loop for checking the next highest element
 second loop for arranging that elemnt in the array

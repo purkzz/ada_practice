@@ -1,5 +1,8 @@
 //Binary search algorithm
 /*
+
+Time Complexity-->O(log n)
+
 you search Binarily
 you break the array and search
 bin_srch(array,low,high,key)
