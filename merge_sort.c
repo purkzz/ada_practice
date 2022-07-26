@@ -51,74 +51,94 @@ if i<left_subarray_size                   if j<right_subarray_size
     a[k]=left[i]                               a[k]=right[j]    
     i++ k++                                 j++ k++ 
 */
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
-void merge_sort(int [],int,int);
 void merge(int [],int,int,int);
-int a[100000],n=0,l,m,r;
+void merge_sort(int [],int,int);
 
 void main(){
-    clock_t start,end;
-    while (n<=10000)
-    {
-        for (int i = 0; i < n; i++){a[i]=rand();}
-
-        start=clock();
-        merge_sort(a,0,n-1);
-        for(int j=0;j<50000000;j++){int temp=38/600;}
-        end=clock();
-        printf("Time for n=%d is %f seconds \n",n,(((double)(end-start))/CLOCKS_PER_SEC));
-
-        n+=1000;
-    }   
+    int a[]={10,9,8,7,6,5,4,3,2,1,0},n=11,i;
+    for(i=0;i<11;i++)
+        printf("%d\t",a[i]);
+    merge_sort(a,0,10);
+    printf("\n");
+    for(i=0;i<11;i++)
+        printf("%d\t",a[i]);
 }
-
+// void merge(int a[],int l,int m,int r){
+//     int n1=m+1-l,n2=r-m;
+//     int L[n1],R[n2];
+//     for(int i=0;i<n1;i++){L[i]=a[l+i];}
+//     for(int j=0;j<n2;j++){R[j]=a[m+1+j];}
+//     int i=0,j=0,k=0;
+//     while (i<n1 && j<n2)
+//     {
+//         if (L[i]<=R[j])
+//         {
+//             a[k]=L[i];
+//             i++;
+//         }
+//         else
+//         {
+//             a[k]=R[j];
+//             j++;
+//         }
+//         k++;
+//     }
+//     while (i<n1)
+//     {
+//         a[k]=L[i];
+//         i++;
+//         k++;
+//     }
+//     while (j<n2)
+//     {
+//         a[k]=R[j];
+//         j++;
+//         k++;
+//     }
+// }
 void merge_sort(int a[],int l,int r){
     if (l<r)
     {
-        m=(l+r)/2;
-        merge_sort(a,l,m);
-        merge_sort(a,m+1,r);
-        merge(a,l,m,r);
+        int mid=(l+r)/2;
+        merge_sort(a,l,mid);
+        merge_sort(a,mid+1,r);
+        merge(a,l,mid,r);
     }
+    
 }
-
-void merge(int a[],int l,int m,int r){
-    int lsubarr =m+1-l;  //left subarray size
-    int rsubarr =r-m;    //right subarray size
-    int left[lsubarr],right[rsubarr];
-    for (int i = 0; i < lsubarr; i++){left[i]=a[l+i];}
-    for (int i = 0; i < rsubarr; i++){right[i]=a[m+1];}
-    int i=0,j=0,k=1;  
-    //initializing final sorted array pointers  
-    //i--->left_sub_arr  j--->right_sub_arr  k--->final array pointer
-
-    while (i<lsubarr && j<rsubarr)
+void merge(int a[],int low,int mid,int high)
+{
+    int c[15000],i,j,k;
+    i=k=low;
+    j=mid+1;
+    while(i<=mid && j<=high)
     {
-        if(left[i]<=right[j]){
-            a[k]=left[i];
+        if(a[i]<a[j]){
+            c[k]=a[i];
             i++;
-        }
-        else
-        {
-            a[k]=right[j];
+            }
+        else{
+            c[k]=a[j];
             j++;
-        }
-        k++;
+            }
+            k++;
     }
-    while(i<lsubarr)
+    while(j<=high)
     {
-        a[k]=left[i];
-        k++;
-        i++;
-    }
-    while(j<rsubarr)
-    {
-        a[k]=right[j];
+        c[k]=a[j];
         k++;
         j++;
+        }
+    while(i<=mid){
+        c[k]=a[i];
+        k++;
+        i++;
+            }
+    for(i=low;i<=high;i++){
+        a[i]=c[i];
     }
 }
