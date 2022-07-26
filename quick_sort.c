@@ -43,50 +43,48 @@ if left<right
 #include<stdlib.h>
 #include<time.h>
 
-int partition(int [],int,int);
-void quicksort(int [],int,int);
-void swap(int* ,int*);
-int a[10000],n=500,left,right,cnt=1;
+void quic(int [],int,int);
+int part(int [],int,int);
+void swap(int *,int *);
+void printit();
 
 void main(){
-    clock_t start,end;
-    while (n<=10000)
-    {
-        for (int i = 0; i < n; i++){a[i]=rand();}
-        
-        start=clock();
-        quicksort(a,0,n-1);
-        for(int j=0;j<50000000;j++){int temp=38/600;}
-        end=clock();
-        printf("Time for n=%d is %f seconds \n",n,(((double)(end-start))/CLOCKS_PER_SEC));
-        n+=500;
-    }
+    int a[]={11,10,9,8,7,6,5,4,3,2,1,0};
+    printit(a,12);
+    quic(a,0,11);
+    printf("\n");
+    printit(a,12);
 }
 
-void quicksort(int a[],int left,int right){
-    if (left<right)
+void quic(int a[],int l,int r){
+    if (l<r)
     {
-        int mid=partition(a,left,right);
-        quicksort(a,left,mid-1);
-        quicksort(a,mid+1,right);
+        int pivot=part(a,l,r);
+        quic(a,l,pivot-1);
+        quic(a,pivot+1,r);
     }
 }
-
-int partition(int a[],int left,int right){
-    int pivot=a[left];   
-    int i=left,j=right;
+int part(int a[],int l,int r){
+    int i=l,j=r,pivot=a[l];
     while (i<j)
     {
-        while(a[i]<=pivot){i++;};
-        while(a[j]>pivot){j--;};
-        if (i<j){swap(&a[i],&a[j]);}        
+        while(a[i]<=pivot){i++;}
+        while(a[j]>pivot){j--;}
+        if(i<j){swap(&a[i],&a[j]);}
     }
-    swap(&a[left],&a[j]);
+    swap(&a[l],&a[j]);
     return j;
 }
 
-void swap(int* a,int* b){
+void swap(int *a,int *b){
     int t=*a;
     *a=*b;
     *b=t;
+}
+
+void printit(int a[],int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d\t",a[i]);
+    }
 }
