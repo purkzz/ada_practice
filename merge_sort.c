@@ -91,7 +91,7 @@ void merge(int a[],int l,int m,int r){
     int rsubarr =r-m;    //right subarray size
     int left[lsubarr],right[rsubarr];
     for (int i = 0; i < lsubarr; i++){left[i]=a[l+i];}
-    for (int i = 0; i < rsubarr; i++){right[i]=a[m+1];}
+    for (int i = 0; i < rsubarr; i++){right[i]=a[m+1+j];}
     int i=0,j=0,k=1;  
     //initializing final sorted array pointers  
     //i--->left_sub_arr  j--->right_sub_arr  k--->final array pointer
