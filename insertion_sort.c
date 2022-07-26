@@ -51,7 +51,7 @@ void ins_sort(int n,int a[]){
         while (key<a[j] && j>=0)
         {
             a[j+1]=a[j];
-            --j;
+            j--;
         }
         a[j+1]=key;
     }
