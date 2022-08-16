@@ -1,7 +1,7 @@
 1-->Heap sort            -->done
-2-->warshals algo
+2-->warshals algo        -->done
 3-->knapsack             -->done
-4-->floyds algo
+4-->floyds algo          -->done
 5-->prims algo           -->done
 6-->kruskals algo        -->done
 7-->dijkstras algo
